@@ -1,2 +1,22 @@
-<h1>Dashboard#admin</h1>
+<h1>Dashboard: Admin</h1>
 <p>Find me in app/views/dashboard/admin.html.erb</p>
+
+<%= form_with(model: @account, url:dashboard_path) do |f| %>
+
+  <%= f.text_field :fname %>
+  <%= f.text_field :lname %>
+  <%= f.text_field :dotnum %>
+  <%= f.submit %>
+
+<% end %>
+
+<h2>All accounts</h2>
+
+<% Account.all.each do |e| %>
+
+  <%= e.fname %>
+  <%= e.lname %>
+  <%= e.dotnum %>
+  <br>
+
+<% end %>
