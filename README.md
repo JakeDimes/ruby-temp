@@ -3,6 +3,14 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
+
+# Model Definitions
+
+## Accont
+- fname: String
+- lname: String
+- dotnum: Integer
+
 Things you may want to cover:
 
 * Ruby version
@@ -20,5 +28,3 @@ Things you may want to cover:
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
-
-* ...
