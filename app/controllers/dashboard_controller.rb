@@ -6,6 +6,25 @@ class DashboardController < ApplicationController
   def student
   end
 
+
+  # DELETE request to dashboard - Deletes user accounts
+  def delete_account
+
+    print(params)
+
+    # get the user id passed in from the parameters
+    account_id = params[:id]
+
+    # delete from database
+    Account.find(account_id).delete
+
+    # render admin
+    render 'dashboard/admin'
+
+  end
+
+
+  # POST request to dashboard - Adds users to Accounts database
   def add_account
 
     # params from the route form submission

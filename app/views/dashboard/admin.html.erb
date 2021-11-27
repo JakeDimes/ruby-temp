@@ -13,7 +13,8 @@
 <h2>All accounts</h2>
 
 <% Account.all.each do |e| %>
-
+  <%= button_to 'Deletebruh', dashboard_path, method: :delete, params: [:id => e.id] %>
+  <%= e.id %>
   <%= e.fname %>
   <%= e.lname %>
   <%= e.dotnum %>
