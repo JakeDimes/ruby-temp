@@ -6,6 +6,9 @@ class DashboardController < ApplicationController
   def student
   end
 
+  def home
+  end
+
   def add_account
 
     # params from the route form submission

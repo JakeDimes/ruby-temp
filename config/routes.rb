@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'dashboard#home'
+  get 'dashboard/home'
   get 'dashboard/admin'
   get 'dashboard/student'
   post 'dashboard', to: "dashboard#add_account"
