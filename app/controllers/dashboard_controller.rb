@@ -17,7 +17,7 @@ class DashboardController < ApplicationController
     Account.find(account_id).delete
 
     # render admin
-    render 'dashboard/admin'
+    redirect_to dashboard_admin_url
 
   end
 
@@ -77,6 +77,6 @@ class DashboardController < ApplicationController
 
     @account = Account.new
     # render the form page again
-    render 'admin'
+    redirect_to dashboard_admin_url
   end
 end
