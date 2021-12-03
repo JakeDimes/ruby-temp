@@ -1,0 +1,20 @@
+<%= form_with method: "post", url: dashboard_admin_teams_new_path do |form| %>
+
+  <%=form.text_field :mem1 %>
+  <%=form.text_field :mem2 %>
+  <%=form.text_field :mem3 %>
+  <%=form.text_field :mem4 %>
+  <%=form.text_field :mem5 %>
+  <%= button_tag 'Add Team'%>
+
+<%end %>
+
+<h2>Available Students</h2>
+<% Account.all.each do |e| %>
+  <%= e.id %>
+  <%= e.fname %>
+  <%= e.lname %>
+  <%= e.dotnum %>
+  <br>
+
+<% end %>

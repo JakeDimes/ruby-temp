@@ -29,8 +29,7 @@ class DashboardController < ApplicationController
 
     # assign to form_with model
     @account_to_edit = Account.find(account_id)
-    puts 'da type'
-    puts(@account_to_edit.class)
+
 
     # view will generate form_With with account_to_edit model
   end

@@ -15,5 +15,13 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
+  # routes for the teams controller follow
+  get 'dashboard/admin/teams', to: 'teams#main'
+
+  # user requests to create a new team
+  get 'dashboard/admin/teams/new', to: 'teams#add_team'
+  post 'dashboard/admin/teams/new', to: 'teams#save_team'
+  delete 'dashboard/admin/teams', to: 'teams#delete_team'
+
 
 end

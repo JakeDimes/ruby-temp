@@ -1,0 +1,34 @@
+<h1>Teams main page</h1>
+
+<h2>All Teams</h2>
+<%# render all the teams %>
+<% Team.all.each do |e| %>
+
+  <%# show team name %>
+  <%= e.name %>
+
+  <%# get the team id %>
+  <% team_id = e.id %>
+
+  <%# find accounts who match the team id and list them %>
+  <% Account.all.each do |a| %>
+
+    <% if a.team_id == team_id %>
+
+      <%="#{a.fname} #{a.lname}.#{a.dotnum}"%>
+
+    <% end %>
+
+  <%end %>
+
+  <%# delete team feature %>
+  <%= button_to 'Delete', dashboard_admin_teams_path, method: :delete, params: [:id => team_id] %>
+
+  <br>
+<% end %>
+
+<h2>Add Teams</h2>
+<%=link_to 'Add Team', dashboard_admin_teams_new_path %>
+
+
+
