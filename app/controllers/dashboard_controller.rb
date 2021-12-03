@@ -10,8 +10,6 @@ class DashboardController < ApplicationController
   # DELETE request to dashboard - Deletes user accounts
   def delete_account
 
-    print(params)
-
     # get the user id passed in from the parameters
     account_id = params[:id]
 
@@ -20,6 +18,44 @@ class DashboardController < ApplicationController
 
     # render admin
     render 'dashboard/admin'
+
+  end
+
+  # GET request to dashboard - edit an account
+  def edit_account
+
+    # params from route will be the id
+    account_id = params[:id]
+
+    # assign to form_with model
+    @account_to_edit = Account.find(account_id)
+    puts 'da type'
+    puts(@account_to_edit.class)
+
+    # view will generate form_With with account_to_edit model
+  end
+
+  # PUT request ot dashboard - save edited account
+  def edit_save
+
+    # the account id the user wants to update
+    account_id = params[:update_id]
+
+    # the new data the user wants to update stuff with
+    account_data = params[:account]
+
+    # account object
+    acc_update = Account.find(account_id)
+
+    acc_update.fname = account_data[:fname]
+    acc_update.lname = account_data[:lname]
+    acc_update.dotnum = account_data[:dotnum]
+
+    # save to database
+
+    acc_update.save
+
+    redirect_to dashboard_admin_url
 
   end
 
