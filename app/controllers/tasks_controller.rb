@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
-  def main
-
+  def new
+    @task = Task.new
+    @user_tasks = Task.find_by_team_id(session[:current_user_team])
   end
 
   def delete_task
@@ -15,5 +16,18 @@ class TasksController < ApplicationController
     redirect_to dashboard_admin_tasks_path
 
 
+  end
+
+  def create_task
+    #params from form submission
+    tasks_data = params[:task]
+
+    @task = Task.new name:tasks_data[:name], team_id:tasks_data[:team_id], due_date:tasks_data[:due_data], status:tasks_data[:status]
+    # TODO: check .save for success
+    @task.save
+
+    @task = Task.new
+    # wip
+    redirect_to tasks_new_url
   end
 end
