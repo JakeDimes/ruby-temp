@@ -26,5 +26,10 @@ Rails.application.routes.draw do
   post 'dashboard/admin/teams/new', to: 'teams#save_team'
   delete 'dashboard/admin/teams', to: 'teams#delete_team'
 
+  # user requests to session
+  get 'session/username', to: 'session#user_name_form'
+  get 'session/password', to: 'session#password_form'
+  get 'session/auth', to: 'session#create'
+
 
 end
