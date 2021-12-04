@@ -1,3 +1,19 @@
 <h1>Dashboard#student</h1>
 <p>Find me in app/views/dashboard/student.html.erb</p>
 This is the student dashboard
+
+<tr>
+  <th> Survey </th>
+  <th> Team </th>
+  <th> Due Date </th>
+  <th> Status </th>
+</tr>
+
+<tr>
+<% GetsAssigned.joins(Team).where("team_id = session[:team_id]").joins(Task).where("eval_id = :eval_id").each do |t| %>
+  <td> <%= button_to t.name, ratings_new_path, method: :get %> </td>
+  <td> <%= t.team_id %> </td>
+  <td> <%= t.due_date %> </td>
+  <td> <%= t.status %> </td>
+<% end %>
+</tr>
