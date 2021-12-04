@@ -1,2 +1,20 @@
 <h1>Ratings#new</h1>
 <p>Find me in app/views/ratings/new.html.erb</p>
+
+<h>Team member Evaluations</h>
+<%= form_with(model: @ratings, url:dashboard_path, method: "post") do |f| %>
+  <%= Account.find_by_team_id(session[:team_id]) do |t|%>
+    <%#= f.select :rating, ratings.all.collect { |r| [r.rated_student, r.]}%>
+    <% t.fname + t.lname %>
+    <%= f.number_field :rating %>
+    <%= f.text_field :dotnum %>
+
+  <% end %>
+  <%= f.submit %>
+<% end %>
+
+
+
+
+<%# PRINT NAMES OF TEAM MEMBERS AND THEN A NUMBER FIELD ASSOCIATED TO THE TEAM MEMBERS DOTNUMBER THAT TAKES THE RATING FROM 1-10 %>
+<%# STORES IN RATINGS DATABASE %>
