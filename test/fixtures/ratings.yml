@@ -1,15 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  teamname: MyString
-  userID: 1
-  ratedUserID: 1
+  eval_id: 1
+  rating_student: MyString
+  rated_student: MyString
   rating: 1
   comment: MyString
 
 two:
-  teamname: MyString
-  userID: 1
-  ratedUserID: 1
+  eval_id: 1
+  rating_student: MyString
+  rated_student: MyString
   rating: 1
   comment: MyString

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'ratings/new'
   get 'tasks/new'
   root 'dashboard#home'
   get 'dashboard/home'
