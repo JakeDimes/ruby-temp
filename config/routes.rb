@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   get 'ratings/new'
   get 'tasks/new'
-  root 'dashboard#home'
-  get 'dashboard/home'
+  root 'home#index'
+
+
   get 'dashboard/admin'
   get 'dashboard/student'
   post 'dashboard', to: "dashboard#add_account"
