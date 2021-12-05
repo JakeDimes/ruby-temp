@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_04_193848) do
+ActiveRecord::Schema.define(version: 2021_12_05_002305) do
 
-  create_table "account", force: :cascade do |t|
+  create_table "accounts", force: :cascade do |t|
     t.string "fname"
     t.string "lname"
     t.integer "dotnum"
