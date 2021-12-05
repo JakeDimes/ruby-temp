@@ -2,7 +2,7 @@
 <div class="navbar">
 
   <% if Current.user %>
-  <% str = "#{Current.user.fname} #{Current.user.lname}" %>>
+  <% str = "#{Current.user.fname} #{Current.user.lname}" %>
 
     Hello <%= link_to str, userspace_path %>
 
@@ -10,6 +10,17 @@
 
     <%= link_to 'Login', session_login_path, method: :get %>
 
+  <%end %>
+
+  <%= link_to 'Home', root_path %>
+
+  <!-- Render the buttons passed through the partial parameter -->
+  <%if dynamic_buttons %>
+    <% dynamic_buttons.each do |k,v| %>
+
+      <%= link_to k, v %>
+
+    <%end %>
   <%end %>
 
 </div>
