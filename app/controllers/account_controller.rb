@@ -2,7 +2,7 @@ class AccountController < ApplicationController
 
   # renders the index page
   def index
-
+    @account = Account.new
   end
 
   # DELETE request to dashboard - Deletes user account
@@ -15,7 +15,7 @@ class AccountController < ApplicationController
     Account.find(account_id).delete
 
     # render admin
-    redirect_to dashboard_admin_url
+    redirect_to account_path
 
   end
 
@@ -55,7 +55,7 @@ class AccountController < ApplicationController
 
     acc_update.save
 
-    redirect_to dashboard_admin_url
+    redirect_to account_path
 
   end
 
@@ -75,8 +75,8 @@ class AccountController < ApplicationController
     # TODO: check .save for success
     @account.save
 
-    @account = Account.new
+
     # render the form page again
-    redirect_to dashboard_admin_url
+    redirect_to account_path
   end
 end
