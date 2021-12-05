@@ -46,9 +46,12 @@ class DashboardController < ApplicationController
     # account object
     acc_update = Account.find(account_id)
 
+    # update values
     acc_update.fname = account_data[:fname]
     acc_update.lname = account_data[:lname]
     acc_update.dotnum = account_data[:dotnum]
+    acc_update.email = account_data[:email]
+    acc_update.password = account_data[:password]
 
     # save to database
 
@@ -68,7 +71,7 @@ class DashboardController < ApplicationController
     account_data = params[:account]
 
     # create a new account
-    @account = Account.new fname: account_data[:fname], lname: account_data[:lname], dotnum: account_data[:dotnum]
+    @account = Account.new fname: account_data[:fname], lname: account_data[:lname], dotnum: account_data[:dotnum], email: account_data[:email], password: account_data[:password]
 
     # save to database
     # TODO: check .save for success

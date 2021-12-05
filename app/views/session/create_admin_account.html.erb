@@ -1,0 +1,16 @@
+<% if flash[:password_error]%>
+
+  <div class = "flash"><%=flash[:login_error]%></div>
+
+<%end %>
+<%= form_with model: @account, url: session_admin_path, method: :post do |form|%>
+
+  <%=form.text_field :fname %>
+  <%=form.text_field :lname %>
+  <%=form.text_field :dotnum %>
+  <%=form.text_field :email %>
+  <%=form.text_field :pswd_one %>
+  <%=form.text_field :pswd_two %>
+  <%=form.submit %>
+
+<% end %>
