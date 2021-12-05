@@ -1,6 +1,7 @@
 class DashboardController < ApplicationController
   def admin
-    @account = Account.new
+    # navbar buttons
+    @navbar_buttons = {Accounts: account_path, Teams: teams_path}
   end
 
   def student

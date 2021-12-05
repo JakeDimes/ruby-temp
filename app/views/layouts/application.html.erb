@@ -12,7 +12,7 @@
 
   <body>
 
-    <%= render partial: "shared/navbar" %>
+    <%= render partial: "shared/navbar", locals: {dynamic_buttons: @navbar_buttons} %>
     <%= yield %>
   </body>
 </html>

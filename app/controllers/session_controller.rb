@@ -162,8 +162,6 @@ class SessionController < ApplicationController
 
     end
 
-    session[:current_user_id] = params[:id]
-
   end
 
   # for logging out

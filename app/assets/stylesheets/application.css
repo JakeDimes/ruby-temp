@@ -13,16 +13,23 @@
  *= require_tree .
  *= require_self
  */
-
-.button {
-    border: none;
-    color: black; /* makes the color of text in the button black */
-    font-size: 16px;
-    border-radius: 6px;
-    padding: 5px 12px;
-    transition: 0.3s; /* transition time for when the user hovers over the button */
-    cursor: pointer;
+:root{
+    --light_green: #B4C6A6;
+    --orange: #FFC286;
+    --green: #66806A;
+    --yellow: #FFF1AF;
 }
+
+
+/*.button {*/
+/*    border: none;*/
+/*    color: black; !* makes the color of text in the button black *!*/
+/*    font-size: 16px;*/
+/*    border-radius: 6px;*/
+/*    padding: 5px 12px;*/
+/*    transition: 0.3s; !* transition time for when the user hovers over the button *!*/
+/*    cursor: pointer;*/
+/*}*/
 .submit-button {
     border: none;
     color: black; /* makes the color of text in the button black */
@@ -35,4 +42,38 @@
 a:link {
     text-decoration: none;
     color: black;
+}
+
+.navbar {
+    background-color: var(--green);
+    padding: 10px 10px;
+    overflow: hidden;
+}
+.navbar a { /* navbar buttons */
+    color: white;
+    padding: 10px 20px; /* gives room to each element (bounds, sides) */
+    text-align: center;
+    font-size: 20px;
+    text-decoration: none; /* removes underlines */
+
+}
+
+.navbar a:hover{ /* hovering over a navbar button */
+    background-color: var(--orange)
+}
+
+.navbar a.active {
+    background-color: var(--orange)
+}
+
+/* styling for class = button */
+.button {
+    background-color: var(--green);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
 }
