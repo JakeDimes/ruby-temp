@@ -2,7 +2,8 @@
 <p>Find me in app/views/ratings/new.html.erb</p>
 
 <h1>Team member Evaluations</h1>
-<%= form_with(model: @ratings, url:dashboard_path, method: "post") do |f| %>
+
+<%= form_with(model: @ratings, url:ratings_new_path, method: "post") do |f| %>
   <%= @members.each do |t|%>
     <%#= f.select :rating, ratings.all.collect { |r| [r.rated_student, r.]}%>
     <% t.fname + t.lname %>

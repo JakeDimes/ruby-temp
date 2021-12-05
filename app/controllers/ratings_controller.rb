@@ -3,7 +3,7 @@ class RatingsController < ApplicationController
     
     @ratings = Rating.new
     @members = Account.find_by_team_id(session[:current_user_team])
-
+    #maybe @members = Account.find_by_team_id(Current.user.team_id)
   end
 
   def delete_rating

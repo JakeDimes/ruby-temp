@@ -2,18 +2,25 @@
 <p>Find me in app/views/dashboard/student.html.erb</p>
 This is the student dashboard
 
-<tr>
+<br>
+
+
+<% if Current.user %>
+  <tr>
   <th> Survey </th>
   <th> Team </th>
   <th> Due Date </th>
   <th> Status </th>
 </tr>
-
-<tr>
-<% GetsAssigned.joins(Team).where("team_id = session[:team_id]").joins(Task).where("eval_id = :eval_id").each do |t| %>
-  <td> <%= button_to t.name, ratings_new_path, method: :get %> </td>
-  <td> <%= t.team_id %> </td>
-  <td> <%= t.due_date %> </td>
-  <td> <%= t.status %> </td>
+  <tr>
+  <% Task.joins(Current.user).each do |t| %>
+    <td> <%= link_to t.name, ratings_new_path %> </td>
+    <td> <%= t.team_id %> </td>
+    <td> <%= t.due_date %> </td>
+    <td> <%= t.status %> </td>
+  <% end %>
+  </tr>
+<% else %>
+  <h1> Please log in to view your assigned evaluations. </h1>
 <% end %>
-</tr>
+<%# GetsAssigned.joins(Team).where("team_id = :Current.user.team_id").joins(Task).where("eval_id = :eval_id")%>
