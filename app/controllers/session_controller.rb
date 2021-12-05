@@ -147,6 +147,7 @@ class SessionController < ApplicationController
       if stored_pswd.eql? password # passwords match
 
         # open the session
+        session[:user_id] = account.id
 
         # redirect to home
         redirect_to root_path
@@ -162,6 +163,15 @@ class SessionController < ApplicationController
     end
 
     session[:current_user_id] = params[:id]
+
+  end
+
+  # for logging out
+  def destroy
+
+    session[:user_id] = nil # remove session
+
+    redirect_to root_path, notice: "Logged Out"
 
   end
 

@@ -10,7 +10,7 @@
   <%# get the team id %>
   <% team_id = e.id %>
 
-  <%# find accounts who match the team id and list them %>
+  <%# find account who match the team id and list them %>
   <% Account.all.each do |a| %>
 
     <% if a.team_id == team_id %>
@@ -22,13 +22,13 @@
   <%end %>
 
   <%# delete team feature %>
-  <%= button_to 'Delete', dashboard_admin_teams_path, method: :delete, params: [:id => team_id] %>
+  <%= button_to 'Delete', teams_path, method: :delete, params: [:id => team_id] %>
 
   <br>
 <% end %>
 
 <h2>Add Teams</h2>
-<%=link_to 'Add Team', dashboard_admin_teams_new_path %>
+<%=link_to 'Add Team', teams_new_path %>
 
 
 

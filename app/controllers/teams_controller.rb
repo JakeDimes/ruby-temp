@@ -19,7 +19,7 @@ class TeamsController < ApplicationController
     Team.find(team_id).delete
 
     # redirect
-    redirect_to dashboard_admin_teams_path
+    redirect_to teams_path
 
 
   end
@@ -45,7 +45,7 @@ class TeamsController < ApplicationController
     mem4 = params[:mem4].to_i
     mem5 = params[:mem5].to_i
 
-    # point the accounts to their new team
+    # point the account to their new team
     if mem1 > 1
 
       account1 = Account.find mem1
@@ -55,7 +55,7 @@ class TeamsController < ApplicationController
 
     end
 
-    # point the accounts to their new team
+    # point the account to their new team
     if mem2 > 1
 
       account2 = Account.find mem2
@@ -65,7 +65,7 @@ class TeamsController < ApplicationController
 
     end
 
-    # point the accounts to their new team
+    # point the account to their new team
     if mem3 > 1
 
       account3 = Account.find mem3
@@ -75,7 +75,7 @@ class TeamsController < ApplicationController
 
     end
 
-    # point the accounts to their new team
+    # point the account to their new team
     if mem4 > 1
 
       account4 = Account.find mem4
@@ -85,7 +85,7 @@ class TeamsController < ApplicationController
 
     end
 
-    # point the accounts to their new team
+    # point the account to their new team
     if mem5 > 1
 
       account5 = Account.find mem5
@@ -96,7 +96,7 @@ class TeamsController < ApplicationController
     end
 
     team.save
-    redirect_to dashboard_admin_teams_path
+    redirect_to teams_path
 
   end
 

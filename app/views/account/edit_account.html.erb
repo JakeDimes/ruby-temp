@@ -1,6 +1,6 @@
 <h1>Editing Account Information</h1>
 
-<%= form_with(model: @account_to_edit, url:dashboard_path, method: "put") do |f| %>
+<%= form_with(model: @account_to_edit, url:account_edit_path, method: "put") do |f| %>
   <%= f.text_field :fname %>
   <%= f.text_field :lname %>
   <%= f.text_field :dotnum %>

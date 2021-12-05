@@ -1,28 +1,5 @@
 <h1>Dashboard: Admin</h1>
 <p>Find me in app/views/dashboard/admin.html.erb</p>
 
-<%= form_with(model: @account, url:dashboard_path, method: "post") do |f| %>
-
-  <%= f.text_field :fname %>
-  <%= f.text_field :lname %>
-  <%= f.text_field :dotnum %>
-  <%= f.text_field :email %>
-  <%= f.text_field :password %>
-  <%= f.submit %>
-
-<% end %>
-
-<h2>All accounts</h2>
-
-<% Account.all.each do |e| %>
-  <%= button_to 'Delete', dashboard_path, method: :delete, params: [:id => e.id] %>
-  <%= button_to 'Edit', dashboard_path, method: :get, params: [:id => e.id] %>
-  <%= e.id %>
-  <%= e.fname %>
-  <%= e.lname %>
-  <%= e.dotnum %>
-  <%= e.email %>
-
-  <br>
-
-<% end %>
+<%= link_to "Accounts", account_path %>
+<%= link_to "Teams", teams_path  %>

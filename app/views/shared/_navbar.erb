@@ -1,0 +1,15 @@
+<h1> This is here to push the navbar down from that stupid rails thing in the top corner god i hate it</h1>
+<div class="navbar">
+
+  <% if Current.user %>
+  <% str = "#{Current.user.fname} #{Current.user.lname}" %>>
+
+    Hello <%= link_to str, userspace_path %>
+
+  <%else %>
+
+    <%= link_to 'Login', session_login_path, method: :get %>
+
+  <%end %>
+
+</div>
