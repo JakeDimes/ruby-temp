@@ -1,12 +1,23 @@
 <h1>Tasks#new</h1>
 <p>Find me in app/views/tasks/new.html.erb</p>
-<h2>All Tasks</h2>
 
-<%Tasks.all.each do |f|%>
+<h2>Add task</h2>
+<%= form_with(model:@task, url:tasks_new_path, method: "put") do |f|%>
+  <%=f.text_field :name %>
+  <%=f.text_field :team_id %>
+  <%=f.date_field :due_date %>
+  <%=f.text_field :status%>
+  <%=f.submit %>
+<% end %>
+
+<h2>All Tasks</h2>
+<%Task.all.each do |f|%>
+  <%= button_to 'Delete', tasks_new_path, method: :delete, params: [:id => f.id] %>
   <%= f.name %>
   <%= f.team_id %>
   <%= f.due_date %>
   <%= f.status %>
   <br>
 <% end %>
+
 

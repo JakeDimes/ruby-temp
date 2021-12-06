@@ -13,7 +13,7 @@ class TasksController < ApplicationController
     Tasks.find(name).delete
 
     # redirect
-    redirect_to dashboard_admin_tasks_path
+    redirect_to tasks_new_url
 
 
   end
@@ -22,7 +22,7 @@ class TasksController < ApplicationController
     #params from form submission
     tasks_data = params[:task]
 
-    @task = Task.new name:tasks_data[:name], team_id:tasks_data[:team_id], due_date:tasks_data[:due_data], status:tasks_data[:status]
+    @task = Task.new name:tasks_data[:name], team_id:tasks_data[:team_id], due_date:tasks_data[:due_date], status:tasks_data[:status]
     # TODO: check .save for success
     @task.save
 

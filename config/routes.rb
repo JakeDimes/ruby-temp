@@ -41,6 +41,6 @@ Rails.application.routes.draw do
 
   get 'userspace', to: 'userspace#index' # account management
 
-
-
+  get 'tasks', to: 'tasks#new'
+  post 'tasks', to: 'tasks#create_task'
 end
