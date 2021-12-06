@@ -14,8 +14,8 @@ This is the student dashboard
     <th> Status </th>
   </tr>
   <tr>
-  <% Task.where(Current.user.team_id = @team_id).each do |t| %>
-    <td> <%= link_to t.name, ratings_new_path %> </td>
+  <% Task.where(:team_id => Current.user.team_id).each do |t| %>
+    <td> <%= link_to t.name, ratings_new_path, class: "survey" %> </td>
     <td> <%= t.team_id %> </td>
     <td> <%= t.due_date %> </td>
     <td> <%= t.status %> </td>
@@ -26,4 +26,3 @@ This is the student dashboard
   <h1> Please log in to view your assigned evaluations. </h1>
   <%= link_to 'Login', session_login_path, method: :get %>
 <% end %>
-<%# GetsAssigned.joins(Team).where("team_id = :Current.user.team_id").joins(Task).where("eval_id = :eval_id")%>
