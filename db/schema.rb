@@ -23,14 +23,6 @@ ActiveRecord::Schema.define(version: 2021_12_06_032156) do
     t.string "password"
   end
 
-  create_table "evaluations", force: :cascade do |t|
-    t.string "team"
-    t.string "name"
-    t.integer "evalID"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "gets_assigneds", force: :cascade do |t|
     t.integer "team_id"
     t.integer "eval_id"
@@ -42,16 +34,6 @@ ActiveRecord::Schema.define(version: 2021_12_06_032156) do
     t.integer "eval_id"
     t.integer "rating_student"
     t.integer "rated_student"
-    t.integer "rating"
-    t.string "comment"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "responses", force: :cascade do |t|
-    t.string "teamname"
-    t.integer "userID"
-    t.integer "ratedUserID"
     t.integer "rating"
     t.string "comment"
     t.datetime "created_at", precision: 6, null: false

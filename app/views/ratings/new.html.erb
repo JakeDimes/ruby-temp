@@ -5,7 +5,6 @@
 
 <% Account.where("team_id = ?", Current.user.team_id).each do |t|%>
   <%= form_with(model: @ratings, url:ratings_new_path, method: "post") do |f| %>
-    <%#= f.select :rating, ratings.all.collect { |r| [r.rated_student, r.]}%>
     <%= t.fname + " " + t.lname %>
     <%= f.number_field :rating, min:1, max:10 %>
     <%= f.text_field :comment %>

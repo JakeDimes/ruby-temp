@@ -20,8 +20,15 @@
     --yellow: #FFF1AF;
 }
 
-tr {
-    border: #B4C6A6;
+table, th, td {
+    border: solid 2px #FFC286;
+    border-collapse: collapse;
+    width: 50%;
+    text-align: center;
+}
+.survey {
+    text-decoration: #B4C6A6;
+    color: #66806A
 }
 .submit-button {
     border: none;

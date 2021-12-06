@@ -6,21 +6,23 @@ This is the student dashboard
 
 
 <% if Current.user %>
+  <table>
   <tr>
-  <th> Survey </th>
-  <th> Team </th>
-  <th> Due Date </th>
-  <th> Status </th>
-</tr>
+    <th> Survey </th>
+    <th> Team </th>
+    <th> Due Date </th>
+    <th> Status </th>
+  </tr>
   <tr>
-  <% Task.where(Current.user.team_id = @team_id).each do |t| %>
-    <td> <%= link_to t.name, ratings_new_path(:eval_id => t.id) %> </td>
+  <% Task.where(:team_id => Current.user.team_id).each do |t| %>
+    <td> <%= link_to t.name, ratings_new_path(:eval_id => t.id), class: "survey" %> </td>
     <td> <%= t.team_id %> </td>
     <td> <%= t.due_date %> </td>
     <td> <%= t.status %> </td>
 
   <% end %>
   </tr>
+  </table>
 <% else %>
   <h1> Please log in to view your assigned evaluations. </h1>
   <%= link_to 'Login', session_login_path, method: :get %>
