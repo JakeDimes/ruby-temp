@@ -25,36 +25,31 @@ class SessionController < ApplicationController
   def save_admin_account # called when no admin account exists on login
 
     # for the form with model
-    account = Account.new
+    @account = Account.new
 
     # account data
     acc_data = params[:account]
 
-    #check that passwords match
-    if acc_data[:pswd_one].eql? acc_data[:pswd_two]
+    #save the account
+    @account.id = 1
+    @account.fname = acc_data[:fname]
+    @account.lname = acc_data[:lname]
+    @account.dotnum = acc_data[:dotnum]
+    @account.email = acc_data[:email]
+    @account.password = acc_data[:password]
+    @account.password_confirmation = acc_data[:password_confirmation]
 
-      #save the account
-      account.id = 1
-      account.fname = acc_data[:fname]
-      account.lname = acc_data[:lname]
-      account.dotnum = acc_data[:dotnum]
-      account.email = acc_data[:email]
-      account.password = acc_data[:pswd_one]
 
-      # save it
-      account.save
+    # save it
+    if @account.save
 
+      # send back to home
+      redirect_to root_path
     else
 
-      # flash and return back
-      flash[:password_error] = "Passwords do not match"
-      redirect_to session_admin_path, method: :get
+      render 'create_admin_account'
 
     end
-
-    # send back to home
-    redirect_to root_path
-
   end
 
 
@@ -66,9 +61,9 @@ class SessionController < ApplicationController
 
     # check if this user has a passowrd
     account = Account.find_by(email: @email)
-    unless account.nil? # account exists
+    if account.present? # account exists
 
-      if account.password.eql? "" # no password set
+      if account.password_digest.eql? "" # no password set
 
         # get their id
         id = account.id
@@ -101,16 +96,12 @@ class SessionController < ApplicationController
     email = params[:email]
     id = params[:id]
 
-    # check that passwords match
-    pass_one = params[:pswd_one]
-    pass_two = params[:pswd_two]
+    # update the password and send back to home
+    account = Account.find(id)
+    account.password = params[:password]
+    account.password_confirmation = params[:password_confirmation]
 
-    if pass_one.eql? pass_two
-
-      # update the password and send back to home
-      account = Account.find(id)
-      account.password = pass_one
-      account.save
+    if account.save
 
       redirect_to root_path
 
@@ -138,13 +129,11 @@ class SessionController < ApplicationController
 
       # redirect flash error
       flash[:login_error] = "Account information incorrect"
-      redirect_to session_username_path, method: :get
+      redirect_to session_login_path, method: :get
 
     else  # a user with that email exists
 
-      stored_pswd = account.password
-
-      if stored_pswd.eql? password # passwords match
+      if account.authenticate(password) # passwords match
 
         # open the session
         session[:user_id] = account.id
@@ -156,7 +145,7 @@ class SessionController < ApplicationController
 
         # redirect flash error
         flash[:login_error] =  "Account information incorrect"
-        redirect_to session_username_path, method: :get
+        redirect_to session_login_path, method: :get
 
       end
 

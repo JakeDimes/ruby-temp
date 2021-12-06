@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   # user requests to create a new team
   get 'teams/new', to: 'teams#add_team'
   post 'teams/new', to: 'teams#save_team'
+  post 'teams/new/num', to: 'teams#change_num'
   delete 'teams', to: 'teams#delete_team'
 
   # user requests to session
@@ -42,6 +43,7 @@ Rails.application.routes.draw do
   post 'session/admin', to: 'session#save_admin_account'
 
   get 'userspace', to: 'userspace#index' # account management
+  put 'userspace', to: 'userspace#update_password'
 
   get 'tasks', to: 'tasks#new'
   post 'tasks/new', to: 'tasks#create_task'
