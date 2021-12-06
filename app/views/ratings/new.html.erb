@@ -1,10 +1,10 @@
-
 <h1>Team member Evaluations</h1>
-
 <% Account.where("team_id = ?", Current.user.team_id).each do |t|%>
   <%= form_with(model: @ratings, url:ratings_new_path, method: "post") do |f| %>
     <%= t.fname + " " + t.lname %>
+    <%=f.label :rating, "Rating 1-10" %>
     <%= f.number_field :rating, min:1, max:10 %>
+    <%=f.label :comment, "Leave a comment" %>
     <%= f.text_field :comment %>
     <%= hidden_field_tag :rated_student, t.id %>
     <%= hidden_field_tag :eval_id, params[:eval_id] %>
@@ -12,7 +12,6 @@
   <% end %>
 <% end %>
 <%=button_tag link_to 'Done', dashboard_student_path, method: :get, class: "button" %>
-
 
 
 

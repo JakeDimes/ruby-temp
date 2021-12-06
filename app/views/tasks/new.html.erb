@@ -1,21 +1,30 @@
-
-
 <h2>Add task</h2>
 <%= form_with(model:@task, url:tasks_new_path, method: "post") do |f|%>
+  <%=f.label :name, "Task name" %>
   <%=f.text_field :name %>
+  <%=f.label :team_id, "Team ID" %>
   <%=f.text_field :team_id %>
+  <%=f.label :due_date, "due_date" %>
   <%=f.date_field :due_date %>
   <%=f.submit %>
 <% end %>
 
 <h2>All Tasks</h2>
-<%Task.all.each do |f|%>
-  <%= button_to 'Delete', tasks_new_path, method: :delete, params: [:id => f.id] %>
-  <%= f.name %>
-  <%= f.team_id %>
-  <%= f.due_date %>
-  <%= f.status %>
-  <br>
-<% end %>
-
-
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Team ID</th>
+    <th>Due Date</th>
+    <th>Status</th>
+  </tr>
+  <%Task.all.each do |f|%>
+    <tr>
+      <td><%= button_to 'Delete', tasks_new_path, method: :delete, params: [:id => f.id] %></td>
+      <td><%= f.name %></td>
+      <td><%= f.team_id %></td>
+      <td><%= f.due_date %></td>
+      <td><%= f.status %></td>
+    </tr>
+    <br>
+  <% end %>
+</table>
