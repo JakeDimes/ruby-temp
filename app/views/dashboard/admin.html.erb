@@ -1,8 +1,17 @@
 <h1>Dashboard: Admin</h1>
 <p>Find me in app/views/dashboard/admin.html.erb</p>
 
+<% if Current.user %>
+  <% if Current.user.id == 1 %>
 <%= button_tag link_to "Accounts", account_path, class: "button" %>
 <%= button_tag link_to "Teams", teams_path, class: "button"  %>
 <%= button_tag link_to "Tasks", tasks_path, class: "button" %>
 <%= button_tag link_to "Ratings Summary", ratings_display_path, class: "button" %>
-
+    <% else %>
+    <h1> Sorry, you are not an Admin. Please log in as an admin. </h1>
+    <%= link_to 'Login', session_login_path, method: :get %>
+    <% end %>
+<% else %>
+  <h1> Please log in as an admin. </h1>
+  <%= link_to 'Login', session_login_path, method: :get %>
+<% end %>
