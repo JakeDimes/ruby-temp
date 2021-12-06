@@ -2,10 +2,11 @@ class RatingsController < ApplicationController
   def new
 
     @ratings = Rating.new
-    @eval_id = params[:eval_id]
+    #@eval_id = params[:eval_id]
     #@members = Account.where
     #maybe @members = Account.find_by_team_id(Current.user.team_id)
   end
+
 
   def delete_rating
 
