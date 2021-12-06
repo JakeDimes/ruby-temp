@@ -11,8 +11,9 @@
   </head>
 
   <body>
-
+    <%= render partial: "shared/header" %>
     <%= render partial: "shared/navbar", locals: {dynamic_buttons: @navbar_buttons} %>
     <%= yield %>
+    <%= render partial: "shared/footer" %>
   </body>
 </html>

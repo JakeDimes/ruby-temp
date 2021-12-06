@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-
   get 'dashboard/admin'
   get 'dashboard/student'
 

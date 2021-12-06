@@ -100,6 +100,7 @@ class AccountController < ApplicationController
     @account.lname = account_data[:lname] if account_data[:lname]
     @account.dotnum = account_data[:dotnum] if account_data[:dotnum]
     @account.email = account_data[:email] if account_data[:email]
+    @account.team_id = 0
     @account.password = account_data[:password] if account_data[:password]
     @account.password_confirmation = account_data[:password_confirmation] if account_data[:password_confirmation]
 
