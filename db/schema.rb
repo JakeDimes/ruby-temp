@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_06_014252) do
+ActiveRecord::Schema.define(version: 2021_12_06_032156) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "fname"
@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 2021_12_06_014252) do
 
   create_table "ratings", force: :cascade do |t|
     t.integer "eval_id"
-    t.string "rating_student"
-    t.string "rated_student"
+    t.integer "rating_student"
+    t.integer "rated_student"
     t.integer "rating"
     t.string "comment"
     t.datetime "created_at", precision: 6, null: false

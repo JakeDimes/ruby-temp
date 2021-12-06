@@ -28,6 +28,8 @@ class TasksController < ApplicationController
     task.team_id = tasks_data[:team_id]
     task.due_date = tasks_data[:due_date]
     # TODO: check .save for success
+    task.eval_id = Task.count + 1
+
     task.save
 
     # wip

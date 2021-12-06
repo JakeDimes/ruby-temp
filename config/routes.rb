@@ -46,4 +46,6 @@ Rails.application.routes.draw do
   get 'tasks', to: 'tasks#new'
   post 'tasks/new', to: 'tasks#create_task'
   delete 'tasks/new', to: 'tasks#delete_task'
+
+  post 'ratings/new', to: 'ratings#create_rating'
 end

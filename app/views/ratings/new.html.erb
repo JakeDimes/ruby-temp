@@ -3,15 +3,16 @@
 
 <h1>Team member Evaluations</h1>
 
-<%= form_with(model: @ratings, url:ratings_new_path, method: "post") do |f| %>
-  <%= @members.each do |t|%>
+<% Account.where("team_id = ?", Current.user.team_id).each do |t|%>
+  <%= form_with(model: @ratings, url:ratings_new_path, method: "post") do |f| %>
     <%#= f.select :rating, ratings.all.collect { |r| [r.rated_student, r.]}%>
-    <% t.fname + t.lname %>
-    <%= f.number_field :rating %>
-    <%= f.text_field :dotnum %>
-
+    <%= t.fname + " " + t.lname %>
+    <%= f.number_field :rating, min:1, max:10 %>
+    <%= f.text_field :comment %>
+    <%= hidden_field_tag :rated_student, t.id %>
+    <%= hidden_field_tag :eval_id, params[:eval_id] %>
+    <%= f.submit %>
   <% end %>
-  <%= f.submit %>
 <% end %>
 
 
