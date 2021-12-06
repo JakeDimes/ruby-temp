@@ -1,4 +1,27 @@
 class TasksController < ApplicationController
+
+  def check_user_auth
+
+    if Current.user # a user is signed in
+
+      if !(Current.user.id == 1) # user isnt an admin
+
+        flash[:error] = "You must be an admin to access that page"
+        redirect_to root_path
+      else
+        flash[:error] = nil
+      end
+
+    else # a user isnt signed in
+
+      flash[:error] = "You must sign in"
+
+      redirect_to root_path
+
+    end
+
+  end
+
   def new
     @task = Task.new
     #@user_tasks = Task.find_by_team_id(session[:current_user_team])

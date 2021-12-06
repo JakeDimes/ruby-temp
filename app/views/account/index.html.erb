@@ -1,8 +1,12 @@
 <div class = "form_container">
 
   <h2>Create A New User</h2>
-  <% @account.errors.full_messages.each do |msg| %>
-    <div class="flash">msg</div>
+  <% if @account.errors.any? %>
+    <div class="flash">
+      <%@account.errors.full_messages.each do |msg| %>
+        <%=msg + "."%>
+      <%end %>
+    </div>
   <%end %>
   <%= form_with(model: @account, url:account_path, method: "post") do |f| %>
 

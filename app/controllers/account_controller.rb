@@ -1,27 +1,28 @@
 class AccountController < ApplicationController
 
-  # before_action :check_user_auth
-  #
-  # def check_user_auth
-  #
-  #   if Current.user # a user is signed in
-  #
-  #     unless Current.user.id == 1 # user isnt an admin
-  #
-  #       flash[:error] = "You must be an admin to access that page"
-  #       redirect_to root_path
-  #
-  #     end
-  #
-  #   else # a user isnt signed in
-  #
-  #     flash[:error] = "You must sign in"
-  #
-  #     redirect_to root_path
-  #
-  #   end
-  #
-  # end
+  before_action :check_user_auth
+
+  def check_user_auth
+
+    if Current.user # a user is signed in
+
+      if !(Current.user.id == 1) # user isnt an admin
+
+        flash[:error] = "You must be an admin to access that page"
+        redirect_to root_path
+      else
+        flash[:error] = nil
+      end
+
+    else # a user isnt signed in
+
+      flash[:error] = "You must sign in"
+
+      redirect_to root_path
+
+    end
+
+  end
 
   # renders the index page
   def index
@@ -80,7 +81,7 @@ class AccountController < ApplicationController
     if @account_to_edit.save
       redirect_to account_path
     else
-      render :'account/index'
+      render :edit_account
     end
 
   end
@@ -108,7 +109,7 @@ class AccountController < ApplicationController
     if @account.save
       redirect_to account_path
     else
-      render :'account/index'
+      render :index
     end
   end
 end

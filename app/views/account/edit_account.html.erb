@@ -1,5 +1,13 @@
 <h1>Editing Account Information</h1>
 
+<% if @account_to_edit.errors.any? %>
+  <div class="flash">
+    <%@account_to_edit.errors.full_messages.each do |msg| %>
+      <%=msg + "."%>
+    <%end %>
+  </div>
+<%end %>
+
 <%= form_with(model: @account_to_edit, url:account_edit_path, method: "put") do |f| %>
   <%= f.label :fname, 'First Name' %>
   <%= f.text_field :fname %>
@@ -14,10 +22,10 @@
   <%= f.text_field :email %>
 
   <%= f.label :password, 'Password' %>
-  <%= f.text_field :password %>
+  <%= f.password_field :password %>
 
   <%= f.label :password_confirmation, 'Confirm Password' %>
-  <%= f.text_field :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
 
   <%= button_tag 'Update Account', name: "update_id", value: @account_to_edit.id %>
 

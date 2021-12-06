@@ -102,7 +102,7 @@ class SessionController < ApplicationController
     account.password_confirmation = params[:password_confirmation]
 
     if account.save
-
+      flash[:not_confirmed] = nil
       redirect_to root_path
 
     else
@@ -137,7 +137,7 @@ class SessionController < ApplicationController
 
         # open the session
         session[:user_id] = account.id
-
+        flash[:login_error] = nil
         # redirect to home
         redirect_to root_path
 
