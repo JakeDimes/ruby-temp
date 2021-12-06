@@ -89,7 +89,8 @@ a:link {
     background-color: var(--green);
     padding: 10px 10px;
     overflow: hidden;
-    margin-top: 25px ;
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 .navbar a { /* navbar buttons */
     color: white;
