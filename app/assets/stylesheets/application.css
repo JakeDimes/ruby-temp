@@ -241,3 +241,7 @@ label {
     left: 0px;
     right: 0px;
 }
+
+p {
+    font-size: 22px;
+}
