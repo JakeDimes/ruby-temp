@@ -9,11 +9,14 @@
 
 <% end %>
 <%= form_with url: userspace_path, method: :put do |form| %>
+  <%= form.label :entered_pswd, "Current Password" %>
+  <%= form.password_field :old_password%>
 
-  <%= form.password_field :old_password %>
+  <%= form.label :entered_pswd, "New Password" %>
+  <%= form.password_field :password%>
 
-  <%= form.password_field :password %>
-  <%= form.password_field :password_confirmation %>
+  <%= form.label :entered_pswd, "Confirm New Password" %>
+  <%= form.password_field :password_confirmation%>
 
   <%= form.submit %>
 
