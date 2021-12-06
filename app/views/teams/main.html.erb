@@ -1,6 +1,7 @@
 <h1>Teams main page</h1>
 
 <h2>All Teams</h2>
+<% unless Team.all.size == 0 %>
 <%# render all the teams %>
 <% Team.all.each do |e| %>
   <%# get the team id %>
@@ -9,6 +10,7 @@
   <div class="listing_container">
     <%# show team name %>
     <span class="category">Team Name:</span> <h3><%= e.name %></h3>
+    <span class="category">Team ID:</span> <%= e.id %> <br><br>
     <span class="category">Number of Members:</span> <%= Account.where('team_id == ?', team_id).count%><br><br>
     <span class="category">Member Names:</span><br><br>
 
@@ -32,9 +34,11 @@
 
   <br>
 <% end %>
-
+<% else %>
+  <h3> There are currently no Teams.</h3>
+  <%end %>
 <h2>Add Teams</h2>
-<%=link_to 'Add Team', teams_new_path %>
+<%=link_to 'Add Team', teams_new_path, class: "button" %>
 
 
 

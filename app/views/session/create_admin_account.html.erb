@@ -4,12 +4,22 @@
 
 <%end %>
 <%= form_with model: @account, url: session_admin_path, method: :post do |form|%>
-
+  <%= form.label :fname, "Enter First Name" %>
   <%=form.text_field :fname %>
+
+  <%= form.label :lname, "Enter Last Name" %>
   <%=form.text_field :lname %>
+
+  <%= form.label :dotnum, "Enter Number (.#)" %>
   <%=form.text_field :dotnum %>
+
+  <%= form.label :email, "Enter Email" %>
   <%=form.text_field :email %>
+
+  <%= form.label :password, "Enter Password" %>
   <%=form.password_field :password %>
+
+  <%= form.label :password_confirmation, "Confirm Password" %>
   <%=form.password_field :password_confirmation %>
   <%=form.submit %>
 

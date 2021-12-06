@@ -1,9 +1,9 @@
-<h1>Tasks#Display</h1>
-<p>Find me in app/views/ratings/display.html.erb</p>
+<!-- initialize some holder variables -->
 <h2>Teams</h2>
 <%rating_avg = 0
   comments = ""
 %>
+<!-- For each team, print team name and each task assigned to that team. Then iterate through each student rating and print the average and all comments -->
 <%Team.all.each do |t| %>
   <h1> <%=t.name%></h1>
   <%Task.where("team_id = ?", t.id).each do |task| %>
@@ -21,6 +21,7 @@
         comments += "\n"
         %>
         <% end %>
+      <!-- Print the average rating of the student and the comments -->
       <p><%= "Average Rating: #{rating_avg}" %></p>
       <p><%= "Comments: #{comments}" %></p>
       <%

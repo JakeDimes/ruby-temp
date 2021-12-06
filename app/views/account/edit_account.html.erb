@@ -27,6 +27,6 @@
   <%= f.label :password_confirmation, 'Confirm Password' %>
   <%= f.password_field :password_confirmation %>
 
-  <%= button_tag 'Update Account', name: "update_id", value: @account_to_edit.id %>
+  <%= button_tag 'Update Account', name: "update_id", value: @account_to_edit.id, class: "button" %>
 
 <% end %>
