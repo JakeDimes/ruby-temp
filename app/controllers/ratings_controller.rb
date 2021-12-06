@@ -1,6 +1,6 @@
 class RatingsController < ApplicationController
   def new
-    
+
     @ratings = Rating.new
     @members = Account.find_by_team_id(session[:current_user_team])
     #maybe @members = Account.find_by_team_id(Current.user.team_id)
@@ -15,10 +15,11 @@ class RatingsController < ApplicationController
     Rating.find(eval_id).delete
 
     # redirect
-    redirect_to dashboard_admin_ratings_path
+    #redirect_to dashboard_admin_ratings_path
 
 
   end
+
 
 
 end

@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   def new
     @task = Task.new
-    @user_tasks = Task.find_by_team_id(session[:current_user_team])
+    #@user_tasks = Task.find_by_team_id(session[:current_user_team])
   end
 
   def delete_task
@@ -10,7 +10,7 @@ class TasksController < ApplicationController
     name = params[:id]
 
     # get the team object and delete it
-    Tasks.find(name).delete
+    Task.find(name).delete
 
     # redirect
     redirect_to tasks_new_url
@@ -22,12 +22,15 @@ class TasksController < ApplicationController
     #params from form submission
     tasks_data = params[:task]
 
-    @task = Task.new name:tasks_data[:name], team_id:tasks_data[:team_id], due_date:tasks_data[:due_date], status:tasks_data[:status]
+    #task = Task.new name:tasks_data[:name], team_id:tasks_data[:team_id], due_date:tasks_data[:due_date]
+    task = Task.new
+    task.name = tasks_data[:name]
+    task.team_id = tasks_data[:team_id]
+    task.due_date = tasks_data[:due_date]
     # TODO: check .save for success
-    @task.save
+    task.save
 
-    @task = Task.new
     # wip
-    redirect_to tasks_new_url
+    redirect_to url: tasks_path, method: :get
   end
 end
