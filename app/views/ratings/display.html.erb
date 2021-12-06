@@ -1,0 +1,32 @@
+<h1>Tasks#Display</h1>
+<p>Find me in app/views/ratings/display.html.erb</p>
+<h2>Teams</h2>
+<%rating_avg = 0
+  comments = ""
+%>
+<%Team.all.each do |t| %>
+  <h1> <%=t.name%></h1>
+  <%Task.where("team_id = ?", t.id).each do |task| %>
+    <h1>Task: <%=task.name %></h1>
+    <%Account.where("team_id = ?", t.id).each do |member|%>
+      <p><%="Name:" + member.fname + " " + member.lname %></p>
+      <%Rating.where("eval_id = ? and rated_student = ?", task.id, member.id).each do |r| %>
+        <%
+        rating_avg += r.rating
+        rating_avg /=t.count
+        %>
+
+        <%
+        comments += r.comment
+        comments += "\n"
+        %>
+        <% end %>
+      <p><%= "Average Rating: #{rating_avg}" %></p>
+      <p><%= "Comments: #{comments}" %></p>
+      <%
+        rating_avg = 0
+        comments = ""
+      %>
+      <% end %>
+    <% end %>
+<% end %>
