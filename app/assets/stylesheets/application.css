@@ -119,6 +119,7 @@ a:link {
     text-decoration: none;
     display: inline-block;
     font-size: 20px;
+    margin-top: 5px;
 }
 
 /* styling for forms */
@@ -235,9 +236,7 @@ label {
 
 .footer {
     text-align: center;
-    position: fixed;
     bottom: 0px;
     left: 0px;
     right: 0px;
-    float: bottom;
 }

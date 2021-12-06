@@ -9,6 +9,7 @@
   <div class="listing_container">
     <%# show team name %>
     <span class="category">Team Name:</span> <h3><%= e.name %></h3>
+    <span class="category">Team ID:</span> <h3><%= e.id %></h3>
     <span class="category">Number of Members:</span> <%= Account.where('team_id == ?', team_id).count%><br><br>
     <span class="category">Member Names:</span><br><br>
 
