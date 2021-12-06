@@ -1,3 +1,4 @@
+<!-- Form for submitting ratings of your team members -->
 <h1>Team member Evaluations</h1>
 <% Account.where("team_id = ?", Current.user.team_id).each do |t|%>
   <%= form_with(model: @ratings, url:ratings_new_path, method: "post") do |f| %>
