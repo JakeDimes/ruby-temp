@@ -12,6 +12,7 @@ class TeamsController < ApplicationController
         redirect_to root_path
       else
         flash[:error] = nil
+        @navbar_buttons = {Accounts: account_path, Teams: teams_path, Tasks: tasks_path}
       end
 
     else # a user isnt signed in

@@ -1,5 +1,5 @@
 <!-- Form to add tasks-->
-<h2>Add task</h2>
+<h2>Add Task</h2>
 <%= form_with(model:@task, url:tasks_new_path, method: "post") do |f|%>
   <%=f.label :name, "Task name" %>
   <%=f.text_field :name %>

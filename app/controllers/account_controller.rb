@@ -12,6 +12,7 @@ class AccountController < ApplicationController
         redirect_to root_path
       else
         flash[:error] = nil
+        @navbar_buttons = {Accounts: account_path, Teams: teams_path, Tasks: tasks_path}
       end
 
     else # a user isnt signed in
@@ -27,7 +28,6 @@ class AccountController < ApplicationController
   # renders the index page
   def index
     @account = Account.new
-    @navbar_buttons = {Accounts: account_path, Teams: teams_path}
   end
 
   # DELETE request to dashboard - Deletes user account

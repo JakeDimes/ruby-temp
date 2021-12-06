@@ -1,5 +1,7 @@
 class TasksController < ApplicationController
 
+  before_action :check_user_auth
+
   def check_user_auth
 
     if Current.user # a user is signed in
@@ -10,6 +12,7 @@ class TasksController < ApplicationController
         redirect_to root_path
       else
         flash[:error] = nil
+        @navbar_buttons = {Accounts: account_path, Teams: teams_path, Tasks: tasks_path}
       end
 
     else # a user isnt signed in
@@ -24,6 +27,7 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
+
     #@user_tasks = Task.find_by_team_id(session[:current_user_team])
   end
 
