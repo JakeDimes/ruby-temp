@@ -1,4 +1,4 @@
-Enter email
+
 
 <% if flash[:login_error]%>
 
@@ -8,7 +8,8 @@ Enter email
 
 <%= form_with url: session_password_path, method: :get do |form| %>
 
+  <%= form.label :entered_uname, 'Enter Email' %>
   <%= form.text_field :entered_uname %>
-  <%= form.submit  %>
+  <%= form.submit name: :label, value: "Next" %>
 
 <%end %>

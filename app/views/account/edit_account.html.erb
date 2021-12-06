@@ -1,11 +1,24 @@
 <h1>Editing Account Information</h1>
 
 <%= form_with(model: @account_to_edit, url:account_edit_path, method: "put") do |f| %>
+  <%= f.label :fname, 'First Name' %>
   <%= f.text_field :fname %>
+
+  <%= f.label :lname, 'Last Name' %>
   <%= f.text_field :lname %>
+
+  <%= f.label :dotnum, 'Number (.#)' %>
   <%= f.text_field :dotnum %>
+
+  <%= f.label :email, 'Email' %>
   <%= f.text_field :email %>
+
+  <%= f.label :password, 'Password' %>
   <%= f.text_field :password %>
+
+  <%= f.label :password_confirmation, 'Confirm Password' %>
+  <%= f.text_field :password_confirmation %>
+
   <%= button_tag 'Update Account', name: "update_id", value: @account_to_edit.id %>
 
 <% end %>

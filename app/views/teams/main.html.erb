@@ -3,26 +3,32 @@
 <h2>All Teams</h2>
 <%# render all the teams %>
 <% Team.all.each do |e| %>
-
-  <%# show team name %>
-  <%= e.name %>
-
   <%# get the team id %>
   <% team_id = e.id %>
 
-  <%# find account who match the team id and list them %>
-  <% Account.all.each do |a| %>
+  <div class="listing_container">
+    <%# show team name %>
+    <span class="category">Team Name:</span> <h3><%= e.name %></h3>
+    <span class="category">Number of Members:</span> <%= Account.where('team_id == ?', team_id).count%><br><br>
+    <span class="category">Member Names:</span><br><br>
 
-    <% if a.team_id == team_id %>
 
-      <%="#{a.fname} #{a.lname}.#{a.dotnum}"%>
+    <%# find account who match the team id and list them %>
+    <% Account.all.each do |a| %>
 
-    <% end %>
+      <% if a.team_id == team_id %>
 
-  <%end %>
+        <%="#{a.fname} #{a.lname}.#{a.dotnum}"%><br>
 
-  <%# delete team feature %>
-  <%= button_to 'Delete', teams_path, method: :delete, params: [:id => team_id] %>
+      <% end %>
+
+    <%end %><br>
+
+    <%# delete team feature %>
+    <%= button_to 'Delete', teams_path, method: :delete, params: [:id => team_id] %>
+
+  </div>
+
 
   <br>
 <% end %>
