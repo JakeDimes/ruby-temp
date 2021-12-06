@@ -1,8 +1,13 @@
 <h1>Welcome!</h1>
 
+<% if flash[:error] %>
+
+  <div class = "flash"><%=flash[:error]%></div>
+
+<% end %>
+
 <div class = button-panel>
-    <%= button_tag link_to 'Student Dashboard', dashboard_student_path, method: :get, class: "button" %>
-    <%= button_tag link_to 'Admin Dashboard', dashboard_admin_path, method: :get, class: "button" %>
+
 </div>
 
 <h6>home#index</h6>

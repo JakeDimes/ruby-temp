@@ -77,3 +77,85 @@ a:link {
     display: inline-block;
     font-size: 20px;
 }
+
+/* styling for forms */
+.form_container {
+    border-style: solid;
+    border-color: var(--orange);
+    padding: 12px 12px;
+
+}
+
+/* for text inputs */
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+/* form submit buttons */
+input[type=submit] {
+    background-color: var(--green);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+}
+
+/* form labels */
+label {
+
+    color: var(--green);
+    font-size: 20px;
+    padding: 5px 5px;
+    display: inline-block;
+
+}
+
+
+/* for listing teams/accounts */
+.listing_container {
+    border-style: solid;
+    border-color: var(--orange);
+    padding: 12px 12px;
+    width: 100%;
+    font-size: 20px;
+
+
+}
+
+/* the link tos */
+.listing_container a {
+
+    color: var(--green);
+    padding: 10px 20px; /* gives room to each element (bounds, sides) */
+    text-align: center;
+
+    font-size: 20px;
+    text-decoration: none; /* removes underlines */
+}
+.category { /* categories in the listings */
+    color: var(--light_green);
+    font-weight: bold;
+
+
+}
+
+/* flashes */
+.flash{
+
+    background-color: var(--yellow);
+    text-align: center;
+    font-size: 20px;
+    width: 100%;
+    padding: 30px 30px;
+
+
+
+}
+
+

@@ -44,6 +44,9 @@ class SessionController < ApplicationController
       # save it
       account.save
 
+      # send back to home
+      redirect_to root_path
+
     else
 
       # flash and return back
@@ -52,8 +55,7 @@ class SessionController < ApplicationController
 
     end
 
-    # send back to home
-    redirect_to root_path
+
 
   end
 

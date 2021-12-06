@@ -1,24 +1,44 @@
-<%= form_with(model: @account, url:account_path, method: "post") do |f| %>
+<div class = "form_container">
 
-  <%= f.text_field :fname %>
-  <%= f.text_field :lname %>
-  <%= f.text_field :dotnum %>
-  <%= f.text_field :email %>
-  <%= f.text_field :password %>
-  <%= f.submit %>
+  <h2>Create A New User</h2>
 
-<% end %>
+  <%= form_with(model: @account, url:account_path, method: "post") do |f| %>
+
+    <%= f.label :fname, 'First Name' %>
+    <%= f.text_field :fname %>
+
+    <%= f.label :lname, 'Last Name' %>
+    <%= f.text_field :lname %>
+
+    <%= f.label :dotnum, 'Number (.#)' %>
+    <%= f.text_field :dotnum %>
+
+    <%= f.label :email, 'Email' %>
+    <%= f.text_field :email %>
+
+    <%= f.text_field :password %>
+    <%= f.submit %>
+
+  <% end %>
+</div>
+
 
 <h2>All accounts</h2>
 
+
 <% Account.all.each do |e| %>
-  <%= button_to 'Delete', account_path, method: :delete, params: [:id => e.id] %>
-  <%= button_to 'Edit', account_edit_path, method: :get, params: [:id => e.id] %>
-  <%= e.id %>
-  <%= e.fname %>
-  <%= e.lname %>
-  <%= e.dotnum %>
-  <%= e.email %>
+
+  <div class="listing_container">
+
+    <span class='category'>ID: </span><%= e.id %>
+    <span class='category'>Name: </span><%= e.fname %>
+    <%= e.lname %>
+    <span class='category'>Number: </span><%= e.dotnum %>
+    <span class='category'>Email: </span><%= e.email %>
+    <%= link_to 'Delete', account_path(id: e.id), method: :delete %>
+    <%= link_to 'Edit', account_edit_path(id: e.id), method: :get %>
+
+  </div>
 
   <br>
 
