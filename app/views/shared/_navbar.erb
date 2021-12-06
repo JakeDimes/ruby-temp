@@ -2,9 +2,9 @@
 <div class="navbar">
 
   <% if Current.user %>
-  <% str = "#{Current.user.fname} #{Current.user.lname}" %>
+    <% str = "Hello, #{Current.user.fname} #{Current.user.lname}" %>
 
-    Hello <%= link_to str, userspace_path %>
+    <%= link_to str, userspace_path %>
 
   <%else %>
 

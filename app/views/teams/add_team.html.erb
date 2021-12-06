@@ -1,20 +1,37 @@
-<%= form_with method: "post", url: teams_new_path do |form| %>
+<% if flash[:error] %>
 
-  <%=form.text_field :mem1 %>
-  <%=form.text_field :mem2 %>
-  <%=form.text_field :mem3 %>
-  <%=form.text_field :mem4 %>
-  <%=form.text_field :mem5 %>
-  <%= button_tag 'Add Team'%>
-
-<%end %>
-
-<h2>Available Students</h2>
-<% Account.all.each do |e| %>
-  <%= e.id %>
-  <%= e.fname %>
-  <%= e.lname %>
-  <%= e.dotnum %>
-  <br>
+  <div class = "flash"><%=flash[:error]%></div>
 
 <% end %>
+
+<%= form_with method: :post, url: teams_new_num_path do |form| %>
+  <%= form.label :num, "Enter the number of members you want in this team" %>
+  <%= form.text_field :num %>
+  <%= form.submit value: 'Set Number of Team Members' %>
+<%end %>
+
+<%= form_with method: :post, url: teams_new_path do |form| %>
+  <% if @num.to_i > 0 %>
+
+    <%= form.label :team_name, "Team Name" %>
+    <%=form.text_field :team_name %>
+
+  <%end %>
+
+
+  <% @num.to_i.times do |i|%>
+    <%= form.label "mem#{i}", "Team Member #{i+1}:" %>
+    <%= form.select "mem#{i}", Account.all.select { |m| m.team_id == 0 && m.id != 1}.collect {
+      |a|
+        [ "#{a.fname} #{a.lname}.#{a.dotnum}", a.id ]
+    }, include_blank: true %>
+
+  <%end %>
+
+
+  <% if @num.to_i > 0 %>
+    <%=hidden_field_tag :num, @num %>
+    <%=form.submit value: 'Save Team'%>
+  <%end %>
+
+<%end %>

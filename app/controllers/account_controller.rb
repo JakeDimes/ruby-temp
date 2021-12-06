@@ -1,27 +1,27 @@
 class AccountController < ApplicationController
 
-  before_action :check_user_auth
-
-  def check_user_auth
-
-    if Current.user # a user is signed in
-
-      unless Current.user.id == 1 # user isnt an admin
-
-        flash[:error] = "You must be an admin to access that page"
-        redirect_to root_path
-
-      end
-
-    else # a user isnt signed in
-
-      flash[:error] = "You must sign in"
-
-      redirect_to root_path
-
-    end
-
-  end
+  # before_action :check_user_auth
+  #
+  # def check_user_auth
+  #
+  #   if Current.user # a user is signed in
+  #
+  #     unless Current.user.id == 1 # user isnt an admin
+  #
+  #       flash[:error] = "You must be an admin to access that page"
+  #       redirect_to root_path
+  #
+  #     end
+  #
+  #   else # a user isnt signed in
+  #
+  #     flash[:error] = "You must sign in"
+  #
+  #     redirect_to root_path
+  #
+  #   end
+  #
+  # end
 
   # renders the index page
   def index
@@ -66,20 +66,22 @@ class AccountController < ApplicationController
     account_data = params[:account]
 
     # account object
-    acc_update = Account.find(account_id)
+    @account_to_edit = Account.find(account_id)
 
     # update values
-    acc_update.fname = account_data[:fname]
-    acc_update.lname = account_data[:lname]
-    acc_update.dotnum = account_data[:dotnum]
-    acc_update.email = account_data[:email]
-    acc_update.password = account_data[:password]
+    @account_to_edit.fname = account_data[:fname]
+    @account_to_edit.lname = account_data[:lname]
+    @account_to_edit.dotnum = account_data[:dotnum]
+    @account_to_edit.email = account_data[:email]
+    @account_to_edit.password = account_data[:password]
+    @account_to_edit.password_confirmation = account_data[:password_confirmation]
 
     # save to database
-
-    acc_update.save
-
-    redirect_to account_path
+    if @account_to_edit.save
+      redirect_to account_path
+    else
+      render :'account/index'
+    end
 
   end
 
@@ -93,14 +95,19 @@ class AccountController < ApplicationController
     account_data = params[:account]
 
     # create a new account
-    @account = Account.new fname: account_data[:fname], lname: account_data[:lname], dotnum: account_data[:dotnum], email: account_data[:email], password: account_data[:password]
+    @account = Account.new
+    @account.fname = account_data[:fname] if account_data[:fname]
+    @account.lname = account_data[:lname] if account_data[:lname]
+    @account.dotnum = account_data[:dotnum] if account_data[:dotnum]
+    @account.email = account_data[:email] if account_data[:email]
+    @account.password = account_data[:password] if account_data[:password]
+    @account.password_confirmation = account_data[:password_confirmation] if account_data[:password_confirmation]
 
     # save to database
-    # TODO: check .save for success
-    @account.save
-
-
-    # render the form page again
-    redirect_to account_path
+    if @account.save
+      redirect_to account_path
+    else
+      render :'account/index'
+    end
   end
 end

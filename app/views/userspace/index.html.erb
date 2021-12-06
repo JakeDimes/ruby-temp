@@ -1,2 +1,20 @@
 <h1>Account Management</h1>
 <%= button_to 'Logout', session_logout_path, method: :put, class: "button"%>
+
+<h2>Change Password</h2>
+
+<% if flash[:error] %>
+
+  <div class = "flash"><%=flash[:error]%></div>
+
+<% end %>
+<%= form_with url: userspace_path, method: :put do |form| %>
+
+  <%= form.password_field :old_password %>
+
+  <%= form.password_field :password %>
+  <%= form.password_field :password_confirmation %>
+
+  <%= form.submit %>
+
+<%end %>

@@ -20,6 +20,32 @@
     --yellow: #FFF1AF;
 }
 
+/* headings */
+h1 {
+    background-color: var(--orange);
+    color: var(--green);
+    border-radius: 10px;
+    padding: 10px 10px;
+    font-size: 50px;
+
+}
+
+h2 {
+
+    color: var(--green);
+    padding: 5px 5px;
+    font-weight: bold;
+    font-size: 32px;
+
+}
+
+/* */
+h3 {
+    color: var(--green);
+    font-size: 22px;
+
+
+}
 
 /*.button {*/
 /*    border: none;*/
@@ -83,6 +109,7 @@ a:link {
     border-style: solid;
     border-color: var(--orange);
     padding: 12px 12px;
+    border-radius: 20px;
 
 }
 
@@ -92,6 +119,15 @@ input[type=text] {
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
+    font-size: 14px;
+}
+/* for password inputs */
+input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    font-size: 14px;
 }
 
 /* form submit buttons */
@@ -104,6 +140,21 @@ input[type=submit] {
     text-decoration: none;
     display: inline-block;
     font-size: 20px;
+}
+/* drop downs */
+select {
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+}
+
+select:hover {
+    background-color: var(--orange);
+    color: var(--green);
 }
 
 /* form labels */
@@ -124,7 +175,7 @@ label {
     padding: 12px 12px;
     width: 100%;
     font-size: 20px;
-
+    border-radius: 20px;
 
 }
 
@@ -141,9 +192,8 @@ label {
 .category { /* categories in the listings */
     color: var(--light_green);
     font-weight: bold;
-
-
 }
+
 
 /* flashes */
 .flash{
@@ -153,9 +203,15 @@ label {
     font-size: 20px;
     width: 100%;
     padding: 30px 30px;
-
-
+    border-radius: 20px;
 
 }
 
+/* rows and columns */
+.row {
+    display: flex;
+}
 
+.column {
+    flex: 50%;
+}
