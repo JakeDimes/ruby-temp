@@ -17,29 +17,37 @@
 4. Run command `rails server`
 5. Using the link in the terminal or typing `http://127.0.0.1:3000` into Firefox, view the webpage
 
-
-
-## All stuff before we had previously below but didn't want to erase yet
-
-## Account
+## Database Structure
+### Account
 - fname: String
 - lname: String
 - dotnum: Integer
+- created_at: Datetime
+- updated_at: Datetime
+- team_id: Integer
+- email: String
+- password_digest: String
 
-Things you may want to cover:
+### Ratings
+- eval_id: Integer
+- rating_student: Integer
+- rated_student: Integer
+- rating: Integer
+- comment: String
+- created_at: Datetime
+- updated_at: Datetime
 
-* Ruby version
+### Tasks
+- name: String
+- team_id: Integer
+- due_date: Date
+- status: String
+- created_at: Datetime
+- updated_at: Datetime
+- eval_id: Integer
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+### Teams
+- name: String
+- count: Integer
+- created_at: Datetime
+- updated_at: Datetime
