@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_06_032156) do
+ActiveRecord::Schema.define(version: 2021_12_06_042026) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "fname"
@@ -21,13 +21,6 @@ ActiveRecord::Schema.define(version: 2021_12_06_032156) do
     t.integer "team_id"
     t.string "email"
     t.string "password"
-  end
-
-  create_table "gets_assigneds", force: :cascade do |t|
-    t.integer "team_id"
-    t.integer "eval_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "ratings", force: :cascade do |t|
