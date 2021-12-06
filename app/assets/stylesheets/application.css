@@ -20,16 +20,9 @@
     --yellow: #FFF1AF;
 }
 
-
-/*.button {*/
-/*    border: none;*/
-/*    color: black; !* makes the color of text in the button black *!*/
-/*    font-size: 16px;*/
-/*    border-radius: 6px;*/
-/*    padding: 5px 12px;*/
-/*    transition: 0.3s; !* transition time for when the user hovers over the button *!*/
-/*    cursor: pointer;*/
-/*}*/
+tr {
+    border: #B4C6A6;
+}
 .submit-button {
     border: none;
     color: black; /* makes the color of text in the button black */
