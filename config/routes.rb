@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'ratings/new'
+
   get 'tasks/new'
+
   root 'home#index'
 
 
@@ -42,5 +44,5 @@ Rails.application.routes.draw do
   get 'userspace', to: 'userspace#index' # account management
 
   get 'tasks', to: 'tasks#new'
-  post 'tasks', to: 'tasks#create_task'
+  post 'tasks/new', to: 'tasks#create_task'
 end
