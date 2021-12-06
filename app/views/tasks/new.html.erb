@@ -16,14 +16,15 @@
     <th>Team ID</th>
     <th>Due Date</th>
     <th>Status</th>
+    <th>Action</th>
   </tr>
   <%Task.all.each do |f|%>
     <tr>
-      <td><%= button_to 'Delete', tasks_new_path, method: :delete, params: [:id => f.id] %></td>
       <td><%= f.name %></td>
       <td><%= f.team_id %></td>
       <td><%= f.due_date %></td>
       <td><%= f.status %></td>
+      <td><%= button_to 'Delete', tasks_new_path, method: :delete, params: [:id => f.id] %></td>
     </tr>
     <br>
   <% end %>
