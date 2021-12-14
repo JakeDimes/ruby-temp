@@ -1,15 +1,13 @@
 class DashboardController < ApplicationController
 
-  # GET to:
+  # GET to: dashboard/admin - renders admin dashboard
   def admin
-    # navbar buttons
-    @navbar_buttons = {Accounts: account_path, Teams: teams_path}
+
+    # check that user is an admin
+    check_user_auth
   end
 
   def student
 
   end
-
-
-
 end

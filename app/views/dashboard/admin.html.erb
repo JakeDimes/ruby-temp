@@ -1,22 +1,14 @@
-<!-- If current user id is 1 (AKA admin) then display the admin view navbar, otherwise ask user to log in as an admin -->
-<% if Current.user %>
-  <% if Current.user.id == 1 %>
 <%= link_to "Accounts", account_path, class: "button" %>
 <%= link_to "Teams", teams_path, class: "button"  %>
 <%= link_to "Tasks", tasks_path, class: "button" %>
 <%= link_to "Ratings Summary", ratings_display_path, class: "button" %>
-    <br>
-    <h2> Current number of Accounts: <%= Account.count %> </h2>
-    <h2>Current number of Accounts not in a Team: <%= Account.all.select { |m| m.team_id == 0 && m.id != 1}.collect.count%></h2>
-    <h2> Current number of Tasks: <%= Task.count %> </h2>
-    <h2> Current number of Teams: <%= Team.count %> </h2>
-    <% else %>
-    <h1> Sorry, you are not an Admin. Please log in as an admin. </h1>
-    <%= link_to 'Login', session_login_path, method: :get %>
-    <% end %>
-<% else %>
-  <h1> Please log in as an admin. </h1>
-  <%= link_to 'Login', session_login_path, method: :get %>
+<br/>
+<h2> Current number of Accounts: <%= Account.count %> </h2>
+<h2>Current number of Accounts not in a Team: <%= Account.all.select { |m| m.team_id == 0 && m.id != 1}.collect.count%></h2>
+<h2> Current number of Tasks: <%= Task.count %> </h2>
+<h2> Current number of Teams: <%= Team.count %> </h2>
 
 
-<% end %>
+
+
+

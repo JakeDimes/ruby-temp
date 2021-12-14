@@ -8,6 +8,9 @@
   <div class = "flash"><%=flash[:error]%></div>
 
 <% end %>
+
+<%# form for resetting password %>
+
 <%= form_with url: userspace_path, method: :put do |form| %>
   <%= form.label :entered_pswd, "Current Password" %>
   <%= form.password_field :old_password%>

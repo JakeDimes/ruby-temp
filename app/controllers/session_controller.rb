@@ -1,5 +1,6 @@
 class SessionController < ApplicationController
 
+  # GET to: session/login -> renders login form
   def user_name_form
 
     # check if their exists an admin (Account with ID 1)
@@ -14,6 +15,7 @@ class SessionController < ApplicationController
 
   end
 
+  # GET to: session/admin -> form for creating an admin account
   def create_admin_account # called when no admin account exists on login
 
     # for the form with model
@@ -22,6 +24,7 @@ class SessionController < ApplicationController
     # render form
   end
 
+  # POST to: session/admin -> save admin account
   def save_admin_account # called when no admin account exists on login
 
     # for the form with model
@@ -47,12 +50,13 @@ class SessionController < ApplicationController
       redirect_to root_path
     else
 
-      render 'create_admin_account'
+      render :create_admin_account
 
     end
   end
 
 
+  # GET to: session/password -> login password form
   def password_form
 
     # get the user's email
@@ -78,44 +82,7 @@ class SessionController < ApplicationController
 
   end
 
-  # the user is requested tp create a password on login
-  def update_password
-
-    # get the user's email
-    # @ so email can be sent to the password view
-    @id = params[:id]
-    @email = params[:email]
-
-
-  end
-
-  # put the password in the Account object
-  def confirm_password
-
-    # get email and id
-    email = params[:email]
-    id = params[:id]
-
-    # update the password and send back to home
-    account = Account.find(id)
-    account.password = params[:password]
-    account.password_confirmation = params[:password_confirmation]
-
-    if account.save
-      flash[:not_confirmed] = nil
-      redirect_to root_path
-
-    else
-
-      # redirect back
-      flash[:not_confirmed] = "Passwords do not match"
-      redirect_to session_setpassword_path(:email => email, :id => id), method: :get
-
-    end
-
-  end
-
-  # GET request to open the session
+  # GET request to open the session -> session/auth
   def create
 
     # get the login information
@@ -148,12 +115,10 @@ class SessionController < ApplicationController
         redirect_to session_login_path, method: :get
 
       end
-
     end
-
   end
 
-  # for logging out
+  # PUT to: session/logout -> for logging out
   def destroy
 
     session[:user_id] = nil # remove session

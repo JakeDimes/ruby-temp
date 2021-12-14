@@ -31,8 +31,6 @@ Rails.application.routes.draw do
   get 'session/login', to: 'session#user_name_form'
   get 'session/password', to: 'session#password_form'
   get 'session/auth', to: 'session#create'
-  get 'session/setpassword', to: 'session#update_password'
-  put 'session/setpassword', to: 'session#confirm_password'
   put 'session/logout', to: 'session#destroy'
 
   get 'session/admin', to: 'session#create_admin_account'# route for when no admin account exists at log in
