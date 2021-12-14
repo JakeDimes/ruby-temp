@@ -1,7 +1,7 @@
 <h1>Teams Main Page</h1>
 
 <h2>All Teams</h2>
-<% unless Team.all.size == 0 %>
+<% if !(Team.all.size == 0) %>
 <%# render all the teams %>
 <% Team.all.each do |e| %>
   <%# get the team id %>
@@ -27,7 +27,7 @@
     <%end %><br>
 
     <%# delete team feature %>
-    <%= button_to 'Delete', teams_path, method: :delete, params: [:id => team_id] %>
+    <%= button_to 'Delete', teams_delete_path(team_id), method: :delete %>
 
   </div>
 

@@ -8,7 +8,7 @@
   </div>
 <%end %>
 
-<%= form_with(model: @account_to_edit, url:account_edit_path, method: "put") do |f| %>
+<%= form_with(model: @account_to_edit, url: account_edit_save_path(id: @account_to_edit.id), method: "put") do |f| %>
   <%= f.label :fname, 'First Name' %>
   <%= f.text_field :fname %>
 
@@ -27,6 +27,6 @@
   <%= f.label :password_confirmation, 'Confirm Password' %>
   <%= f.password_field :password_confirmation %>
 
-  <%= button_tag 'Update Account', name: "update_id", value: @account_to_edit.id, class: "button" %>
+  <%= f.submit value: 'Update Account', class: "button" %>
 
 <% end %>

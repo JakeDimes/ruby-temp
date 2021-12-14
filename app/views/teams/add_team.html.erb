@@ -11,7 +11,7 @@
   </div>
 <%end %>
 
-<%= form_with method: :post, url: teams_new_num_path do |form| %>
+<%= form_with method: :post, url: teams_new_num_path(:num) do |form| %>
   <%= form.label :num, "Enter the number of members you want in this team" %>
   <%= form.text_field :num %>
   <%= form.submit value: 'Set Number of Team Members' %>

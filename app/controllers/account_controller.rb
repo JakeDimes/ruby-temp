@@ -1,29 +1,7 @@
 class AccountController < ApplicationController
 
+  # method is in the ApplicationController
   before_action :check_user_auth
-
-  def check_user_auth
-
-    if Current.user # a user is signed in
-
-      if !(Current.user.id == 1) # user isnt an admin
-
-        flash[:error] = "You must be an admin to access that page"
-        redirect_to root_path
-      else
-        flash[:error] = nil
-        @navbar_buttons = {Accounts: account_path, Teams: teams_path, Tasks: tasks_path}
-      end
-
-    else # a user isnt signed in
-
-      flash[:error] = "You must sign in"
-
-      redirect_to root_path
-
-    end
-
-  end
 
   # renders the index page
   def index
@@ -40,7 +18,7 @@ class AccountController < ApplicationController
     Account.find(account_id).delete
 
     # render admin
-    redirect_to account_path
+    redirect_to account_path, method: :post
 
   end
 
@@ -61,21 +39,25 @@ class AccountController < ApplicationController
   def edit_save
 
     # the account id the user wants to update
-    account_id = params[:update_id]
+    account_id = params[:id]
 
     # the new data the user wants to update stuff with
     account_data = params[:account]
 
     # account object
-    @account_to_edit = Account.find(account_id)
+    @account_to_edit = Account.find_by(id: account_id)
 
-    # update values
-    @account_to_edit.fname = account_data[:fname]
-    @account_to_edit.lname = account_data[:lname]
-    @account_to_edit.dotnum = account_data[:dotnum]
-    @account_to_edit.email = account_data[:email]
-    @account_to_edit.password = account_data[:password]
-    @account_to_edit.password_confirmation = account_data[:password_confirmation]
+    # update values if account exists
+    if @account_to_edit
+
+      @account_to_edit.fname = account_data[:fname]
+      @account_to_edit.lname = account_data[:lname]
+      @account_to_edit.dotnum = account_data[:dotnum]
+      @account_to_edit.email = account_data[:email]
+      @account_to_edit.password = account_data[:password]
+      @account_to_edit.password_confirmation = account_data[:password_confirmation]
+
+    end
 
     # save to database
     if @account_to_edit.save

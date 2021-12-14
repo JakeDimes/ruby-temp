@@ -5,21 +5,18 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  get 'dashboard/admin'
-  get 'dashboard/student'
+  get 'dashboard/admin' # renders the admin dashboard
+  get 'dashboard/student' # renders the student dashboard
 
   get 'account', to: 'account#index' # accounts management index
   post 'account', to: "account#add_account" # adding an account
-  delete 'account', to: "account#delete_account"
+  delete 'account/delete/:id', to: "account#delete_account", as: 'account_delete'
 
   # admin is requesting to edit some account information
-  get 'account/edit', to: 'account#edit_account'
+  get 'account/edit/:id', to: 'account#edit_account', as: 'account_edit'
 
   # admin saves edited account information
-  put 'account/edit', to: 'account#edit_save'
-
-
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  put 'account/edit/:id', to: 'account#edit_save', as: 'account_edit_save'
 
   # routes for the teams controller follow
   get 'teams', to: 'teams#main'
@@ -28,7 +25,7 @@ Rails.application.routes.draw do
   get 'teams/new', to: 'teams#add_team'
   post 'teams/new', to: 'teams#save_team'
   post 'teams/new/num', to: 'teams#change_num'
-  delete 'teams', to: 'teams#delete_team'
+  delete 'teams/delete/:id', to: 'teams#delete_team', as: 'teams_delete'
 
   # user requests to session
   get 'session/login', to: 'session#user_name_form'

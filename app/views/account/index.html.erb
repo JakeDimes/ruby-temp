@@ -48,7 +48,7 @@
         <span class='category'>Email: </span><%= e.email %>
       </div>
       <div class="column_right">
-        <%= link_to 'Delete', account_path(id: e.id), method: :delete %>
+        <%= link_to 'Delete', account_delete_path(id: e.id), method: :delete %>
         <%= link_to 'Edit', account_edit_path(id: e.id), method: :get %>
       </div>
     </div>
