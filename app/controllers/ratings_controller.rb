@@ -1,10 +1,6 @@
 class RatingsController < ApplicationController
   def new
-
     @ratings = Rating.new
-    #@eval_id = params[:eval_id]
-    #@members = Account.where
-    #maybe @members = Account.find_by_team_id(Current.user.team_id)
   end
 
 
@@ -25,7 +21,7 @@ class RatingsController < ApplicationController
   def create_rating
     #get stuff from params
     rating_data = params[:rating]
-
+    #assign proper params values to the proper attributes in rating
     rating = Rating.new
     rating.rating_student = Current.user.id
     rating.rated_student = params[:rated_student]
@@ -34,7 +30,6 @@ class RatingsController < ApplicationController
     rating.eval_id = params[:eval_id]
 
     rating.save
-    #redirect_to dashboard_student_path
   end
 
 

@@ -1,5 +1,5 @@
 <div class = "form_container">
-
+  <!-- Use flash to display any potential account errors -->
   <h2>Create A New User</h2>
   <% if @account.errors.any? %>
     <div class="flash">
@@ -8,6 +8,7 @@
       <%end %>
     </div>
   <%end %>
+  <!-- Get a blank form and allow user to populate with new account information, then button will post the new information -->
   <%= form_with(model: @account, url:account_path, method: "post") do |f| %>
 
     <%= f.label :fname, 'First Name' %>
@@ -35,7 +36,7 @@
 
 <h2>All accounts</h2>
 
-
+<!-- Iterate through all accounts in database then list their information along with buttons to edit or delete those users-->
 <% Account.all.each do |e| %>
 
   <div class="listing_container">

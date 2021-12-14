@@ -1,3 +1,4 @@
+<!-- Use flash to display any potential errors -->
 <% if flash[:error] %>
 
   <div class = "flash"><%=flash[:error]%></div>
@@ -10,7 +11,7 @@
     <%end %>
   </div>
 <%end %>
-
+<!-- Get a blank form that allows user to create a team with a name and number of team members -->
 <%= form_with method: :post, url: teams_new_num_path(:num) do |form| %>
   <%= form.label :num, "Enter the number of members you want in this team" %>
   <%= form.text_field :num %>
@@ -25,7 +26,7 @@
 
   <%end %>
 
-
+  <!-- For each number of team members get a form for each of them and allow user to assign accounts to team-->
   <% @num.to_i.times do |i|%>
     <%= form.label "mem#{i}", "Team Member #{i+1}:" %>
     <%= form.select "mem#{i}", Account.all.select { |m| m.team_id == 0 && m.id != 1}.collect {
@@ -35,7 +36,7 @@
 
   <%end %>
 
-
+  <!-- button to save team-->
   <% if @num.to_i > 0 %>
     <%=hidden_field_tag :num, @num %>
     <%=form.submit value: 'Save Team'%>

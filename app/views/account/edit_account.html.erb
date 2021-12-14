@@ -1,5 +1,5 @@
 <h1>Editing Account Information</h1>
-
+<!-- If any account errors use the flash to show the messages -->
 <% if @account_to_edit.errors.any? %>
   <div class="flash">
     <%@account_to_edit.errors.full_messages.each do |msg| %>
@@ -7,7 +7,7 @@
     <%end %>
   </div>
 <%end %>
-
+<!--Get populated form with account info and then allow admin to edit it, then button press will update the account-->
 <%= form_with(model: @account_to_edit, url: account_edit_save_path(id: @account_to_edit.id), method: "put") do |f| %>
   <%= f.label :fname, 'First Name' %>
   <%= f.text_field :fname %>

@@ -1,4 +1,4 @@
-
+<!-- If current user id is 1 (AKA admin) then display the admin view navbar, otherwise ask user to log in as an admin -->
 <% if Current.user %>
   <% if Current.user.id == 1 %>
 <%= link_to "Accounts", account_path, class: "button" %>

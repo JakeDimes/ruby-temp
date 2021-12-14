@@ -1,4 +1,4 @@
-
+<!-- If the current user is logged in -->
 <% if Current.user %>
   <table>
   <tr>
@@ -7,7 +7,7 @@
     <th> Due Date </th>
     <th> Status </th>
   </tr>
-
+    <!-- Display user tasks according to the tasks assigned to their team -->
     <% Task.where(:team_id => Current.user.team_id).each do |t| %>
       <% unless Rating.where(:rating_student => Current.user.id ).size >= 1 && Rating.where(:eval_id => t.eval_id).size >= 1 %>
         <tr>
@@ -22,6 +22,7 @@
   </table>
   <h3>If the Table is empty, you have no current Evaluations assigned. </h3>
 <% else %>
+  <!-- If user is not logged in display this -->
   <h1> Please log in to view your assigned evaluations. </h1>
   <%= link_to 'Login', session_login_path, method: :get, class: "button" %>
 <% end %>
