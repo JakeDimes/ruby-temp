@@ -7,7 +7,7 @@
 <%Team.all.each do |t| %>
   <h1> <%=t.name%></h1>
   <%Task.where("team_id = ?", t.id).each do |task| %>
-    <h1>Task: <%=task.name %></h1>
+    <h2>Task: <%=task.name %></h2>
     <%Account.where("team_id = ?", t.id).each do |member|%>
       <p><%="Name:" + member.fname + " " + member.lname %></p>
       <%Rating.where("eval_id = ? and rated_student = ?", task.id, member.id).each do |r| %>
